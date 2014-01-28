@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using BundlerMiddleware;
 
-namespace mist.Middleware
+namespace BundlerMiddleware
 {
     using System.IO;
     using System.Net;
