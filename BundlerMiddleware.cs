@@ -1,20 +1,34 @@
-﻿
-namespace BundlerMiddleware
+﻿namespace BundlerMiddleware
 {
+    using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
+    using System.Runtime.Remoting.Messaging;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Web.Optimization;
+    using System.Web.Routing;
 
     using Microsoft.Owin;
+
+    public class Example
+    {
+        public void doSoemthing()
+        {
+            BundlerMiddleware.GetFilePathResolver = (context, route) => "/";
+        }
+    }
 
     public class BundlerMiddleware : OwinMiddleware
     {    
         private static readonly Regex matcher = new Regex(@"\!\!(scripts|styles):([^\}]+)\!\!", RegexOptions.Compiled); 
         private static readonly IDictionary<string ,string> contentCache = new ConcurrentDictionary<string, string>();
+
+        public static Func<IOwinContext, BundlerRoute, string> GetFilePathResolver =
+            (context, route) => GetFilePath(context, route);
+
         public BundlerMiddleware(OwinMiddleware next) : base(next)
         {
         }
@@ -42,34 +56,33 @@ namespace BundlerMiddleware
                 return contentCache[route.Route];
             }
 
-            var baseContext = context.Environment["System.Web.HttpContextBase"] as System.Web.HttpContextBase;
-            if (baseContext != null)
-            {
-                var fullPath = baseContext.Server.MapPath(route.FilePath);
-                return await MatchReplacer(fullPath);
-            }
+            return await MatchReplacer(GetFilePathResolver(context, route));
+        }
 
-            return null;
+        private static string GetFilePath(IOwinContext context, BundlerRoute route)
+        {
+            var baseContext = context.Environment["System.Web.HttpContextBase"] as System.Web.HttpContextBase;
+
+            if (baseContext == null)
+            {
+                throw new Exception("Unable to resolve file path becuase you're not on IIS");
+            }
+            
+            return baseContext.Server.MapPath(route.FilePath);
         }
 
         public override async Task Invoke(IOwinContext context)
         {
-            var path = context.Request.Path.ToString();
+            var path = context.Request.Path.ToString(); // / /home
+
             if (BundlerRoutes.Routes.Exists(path))
             {
                 var route = BundlerRoutes.Routes.Get(path);
+
+                var content = await GetContent(context, route);
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
                 context.Response.ContentType = "text/html";
-                var content = await GetContent(context, route);
-
-                if (content != null)
-                {
-                    await context.Response.WriteAsync(content);
-                }  
-                else
-                {
-                    await Next.Invoke(context);
-                }
+                await context.Response.WriteAsync(content);
             }
             else
             {
