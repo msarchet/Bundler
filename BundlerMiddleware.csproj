@@ -70,6 +70,10 @@
   <ItemGroup>
     <Compile Include="BundlerMiddleware.cs" />
     <Compile Include="BundlerRouteTables.cs" />
+    <Compile Include="DefaultBundleResolver.cs" />
+    <Compile Include="DefaultFileResolver.cs" />
+    <Compile Include="IBundleResolver.cs" />
+    <Compile Include="IFileResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
