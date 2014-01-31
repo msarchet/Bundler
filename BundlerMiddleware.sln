@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BundlerMiddleware", "BundlerMiddleware.csproj", "{A512A2F1-468A-4E91-9C68-3BAC36833902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BundlerMiddleware", "BundlerMiddleware\BundlerMiddleware.csproj", "{A512A2F1-468A-4E91-9C68-3BAC36833902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BundlerMiddleware.IIS", "BundlerMiddleware.IIS\BundlerMiddleware.IIS.csproj", "{C7A73795-0A66-49D3-B82E-35C679042510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A512A2F1-468A-4E91-9C68-3BAC36833902}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A512A2F1-468A-4E91-9C68-3BAC36833902}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A512A2F1-468A-4E91-9C68-3BAC36833902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A73795-0A66-49D3-B82E-35C679042510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A73795-0A66-49D3-B82E-35C679042510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A73795-0A66-49D3-B82E-35C679042510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A73795-0A66-49D3-B82E-35C679042510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
