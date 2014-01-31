@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using BundlerMiddleware;
-
+﻿
 namespace BundlerMiddleware
 {
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
     using System.IO;
     using System.Net;
     using System.Text.RegularExpressions;
@@ -13,6 +13,8 @@ namespace BundlerMiddleware
 
     public class BundlerMiddleware : OwinMiddleware
     {    
+        private static readonly Regex matcher = new Regex(@"\!\!(scripts|styles):([^\}]+)\!\!", RegexOptions.Compiled); 
+        private static readonly IDictionary<string ,string> contentCache = new ConcurrentDictionary<string, string>();
         public BundlerMiddleware(OwinMiddleware next) : base(next)
         {
         }
@@ -22,7 +24,6 @@ namespace BundlerMiddleware
             using (var stream = File.OpenText(path))
             {
                 var file = await stream.ReadToEndAsync();
-                var matcher = new Regex(@"\!\!(scripts|styles):([^\}]+)\!\!", RegexOptions.Compiled);
                 return matcher.Replace(file, MatchReplace);
             }
         }
@@ -34,19 +35,37 @@ namespace BundlerMiddleware
                          : Styles.Render(match.Groups[2].Value)).ToString();
         }
 
+        private async static Task<string> GetContent(IOwinContext context, BundlerRoute route)
+        {
+            if (contentCache.ContainsKey(route.Route))
+            {
+                return contentCache[route.Route];
+            }
+
+            var baseContext = context.Environment["System.Web.HttpContextBase"] as System.Web.HttpContextBase;
+            if (baseContext != null)
+            {
+                var fullPath = baseContext.Server.MapPath(route.FilePath);
+                return await MatchReplacer(fullPath);
+            }
+
+            return null;
+        }
+
         public override async Task Invoke(IOwinContext context)
         {
-            var route = BundlerRoutes.Routes.FirstOrDefault(r => r.Route.Equals(context.Request.Path.ToString()));
-            if (route != null)
+            var path = context.Request.Path.ToString();
+            if (BundlerRoutes.Routes.Exists(path))
             {
+                var route = BundlerRoutes.Routes.Get(path);
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
                 context.Response.ContentType = "text/html";
-                var baseContext = context.Environment["System.Web.HttpContextBase"] as System.Web.HttpContextBase;
-                if (baseContext != null)
+                var content = await GetContent(context, route);
+
+                if (content != null)
                 {
-                    var fullPath = baseContext.Server.MapPath(route.FilePath);
-                    await context.Response.WriteAsync(await MatchReplacer(fullPath));
-                }
+                    await context.Response.WriteAsync(content);
+                }  
                 else
                 {
                     await Next.Invoke(context);

@@ -4,6 +4,9 @@ using System.Web.Routing;
 
 namespace BundlerMiddleware
 {
+    using System.Collections.Concurrent;
+    using System.Linq;
+
     public class BundlerRoutes
     {
         public static BundlerRouteTable Routes = new BundlerRouteTable();
@@ -11,11 +14,21 @@ namespace BundlerMiddleware
 
     public class BundlerRouteTable : ICollection<BundlerRoute>
     {
-        private ICollection<BundlerRoute> Routes = new List<BundlerRoute>();
+        private readonly IDictionary<string, BundlerRoute> Routes = new ConcurrentDictionary<string, BundlerRoute>();
+
+        public bool Exists(string route)
+        {
+            return Routes.ContainsKey(route);
+        }
+
+        public BundlerRoute Get(string route)
+        {
+            return Routes[route];
+        }
 
         public void Add(BundlerRoute item)
         {
-            Routes.Add(item);
+            Routes.Add(item.Route, item);
         }
 
         public void Clear()
@@ -25,12 +38,12 @@ namespace BundlerMiddleware
 
         public bool Contains(BundlerRoute item)
         {
-            return Routes.Contains(item);
+            return Routes[item.Route] != null;
         }
 
         public void CopyTo(BundlerRoute[] array, int arrayIndex)
         {
-            Routes.CopyTo(array, arrayIndex);
+            Routes.Select(r => r.Value).ToList().CopyTo(array, arrayIndex);
         }
 
         public int Count
@@ -45,12 +58,12 @@ namespace BundlerMiddleware
 
         public bool Remove(BundlerRoute item)
         {
-            return Routes.Remove(item);
+            return Routes.Remove(item.Route);
         }
 
         public IEnumerator<BundlerRoute> GetEnumerator()
         {
-            return Routes.GetEnumerator();
+            return Routes.Select(r => r.Value).GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
