@@ -1,6 +1,6 @@
 ﻿namespace BundlerMiddleware
 {
-    public interface IBundleResolver
+    public interface IBundlerResolver
     {
         string GetStyleTags(string bundleName);
         string GetScriptTags(string bundleName);

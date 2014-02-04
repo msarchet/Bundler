@@ -2,7 +2,7 @@
 {
     using System.Web.Optimization;
 
-    public class DefaultBundleResolver : IBundleResolver
+    public class DefaultBundleResolver : IBundlerResolver
     {
 
         public string GetStyleTags(string bundleName)
