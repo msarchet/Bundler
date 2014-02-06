@@ -15,9 +15,9 @@
         private static readonly IDictionary<string ,string> contentCache = new ConcurrentDictionary<string, string>();
 
         private readonly IFileResolver fileResolver;
-        private readonly IBundleResolver bundleResolver;
+        private readonly IBundlerResolver bundleResolver;
 
-        public BundlerMiddleware(OwinMiddleware next, IFileResolver fileResolver, IBundleResolver bundleResolver) : base(next)
+        public BundlerMiddleware(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver) : base(next)
         {
             this.fileResolver = fileResolver;
             this.bundleResolver = bundleResolver;
