@@ -72,7 +72,14 @@ namespace BundlerMiddleware
 
     public class BundlerRoute
     {
+		/// <summary>
+		/// Route to be resolved
+		/// </summary>
         public string Route { get; set; }
+
+		/// <summary>
+		/// File path for the bundler to inject
+		/// </summary>
         public string FilePath { get; set; }
 
         public BundlerRoute(string route, string filePath)
@@ -80,7 +87,5 @@ namespace BundlerMiddleware
             this.Route = route;
             this.FilePath = filePath;
         }
-
-        
     }
 }

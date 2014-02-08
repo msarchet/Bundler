@@ -9,6 +9,9 @@
 
     using Microsoft.Owin;
 
+	/// <summary>
+	/// Used to resolve the bunlde tokens into html
+	/// </summary>
     public class BundlerMiddleware : OwinMiddleware
     {    
         private static readonly Regex matcher = new Regex(@"\!\!(scripts|styles):([^\}]+)\!\!", RegexOptions.Compiled); 
@@ -52,7 +55,7 @@
 
         public override async Task Invoke(IOwinContext context)
         {
-            var path = context.Request.Path.ToString(); // / /home
+            var path = context.Request.Path.ToString();
 
             if (BundlerRoutes.Routes.Exists(path))
             {
