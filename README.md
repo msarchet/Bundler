@@ -33,3 +33,8 @@ Then if you have a bundle of ~/bundles/scripts
   </html>
   
 And that's it
+
+More Information
+================
+
+http://msarchet.com/using-the-asp-dot-net-bundling-pipeline-with-owin/
