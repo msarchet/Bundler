@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BundlerMiddleware</id>
+    <version>0.1.0</version>
+    <title>Bundler</title>
+    <authors>Michael Sarchet</authors>
+    <owners>Michael Sarchet</owners>
+    <licenseUrl>https://raw.github.com/msarchet/Bundler/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/msarchet/Bundler</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package for using bundling in OWIN</description>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>OWIN Bundling Middleware</tags>
+  </metadata>
+</package>
