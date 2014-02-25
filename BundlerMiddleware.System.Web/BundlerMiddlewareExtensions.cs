@@ -11,7 +11,7 @@
 		/// <returns></returns>
         public static IAppBuilder UseBundlerMiddlewareForIIS(this IAppBuilder app)
         {
-            return app.Use(typeof(BundlerMiddleware), new DefaultFileResolver(), new DefaultBundleResolver());
+            return app.Use(typeof(BundlerMiddleware), new DefaultFileResolver(), new DefaultBundleResolver(), BundlerRoutes.Routes);
         }
     }
 }
