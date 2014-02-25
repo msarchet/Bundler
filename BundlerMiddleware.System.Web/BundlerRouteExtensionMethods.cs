@@ -15,7 +15,7 @@
 		/// <param name="route">The route to resolve on</param>
 		/// <param name="virutalPath">The location of the file to resolve</param>
 		/// <returns>A <c href="BundlerRoute">BundlerRoute</c></returns>
-        public static void BundlerRouteFromVirtualPath(this BundlerRouteTable table, string route, string virutalPath)
+        public static void FromVirtualPath(this BundlerRouteTable table, string route, string virutalPath)
         {
             table.Add(new BundlerRoute(route, System.Web.VirtualPathUtility.ToAbsolute(virutalPath)));
         }
