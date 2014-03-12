@@ -70,6 +70,7 @@
     <Compile Include="IBundleResolver.cs" />
     <Compile Include="IFileResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replacers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

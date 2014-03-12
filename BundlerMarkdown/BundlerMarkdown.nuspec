@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BundlerMiddleware.Markdown</id>
+    <version>$version$</version>
+    <title>Bundler Markdown</title>
+    <authors>Michael Sarchet</authors>
+    <owners>Michael Sarchet</owners>
+    <licenseUrl>https://raw.github.com/msarchet/Bundler/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/msarchet/Bundler/tree/master/BundlerMarkdown</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>OWIN Middleware for serving markdown files as HTML</description>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>OWIN Markdown MarkdownSharp</tags>
+  </metadata>
+</package>

@@ -91,6 +91,7 @@
     <Content Include="Markdown\markdown.html">
       <DependentUpon>markdown.md</DependentUpon>
     </Content>
+    <Content Include="Markdown\markdownTemplate.html" />
     <Content Include="packages.config" />
     <Content Include="Markdown\markdown.md" />
     <None Include="Web.Debug.config">

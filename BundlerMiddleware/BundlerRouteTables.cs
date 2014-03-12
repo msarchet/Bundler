@@ -12,7 +12,10 @@ namespace BundlerMiddleware
 
     public class BundlerRouteTable : ICollection<BundlerRoute>
     {
+        public string RoutePrefix { get; set; }
+
         private readonly IDictionary<string, BundlerRoute> Routes = new ConcurrentDictionary<string, BundlerRoute>();
+
 
         public bool Exists(string route)
         {
