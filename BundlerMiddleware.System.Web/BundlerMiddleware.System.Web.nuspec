@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BundlerMiddleware.System.Web</id>
-    <version>0.1.0</version>
+    <version>0.3.2</version>
     <title>Bundler.System.Web</title>
     <authors>Michael Sarchet</authors>
     <owners>Michael Sarchet</owners>
@@ -10,11 +10,11 @@
     <projectUrl>https://github.com/msarchet/Bundler</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Package for using the standard System.Web.Optimization bundling with Bundler</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Update for fix in BundlerMiddleware</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Bundler BundlerMiddleware Bundling System.Web.Optimization ASP.NET OWIN Owin Middleware</tags>
     <dependencies>
-        <dependency id="BundlerMiddleware" version="0.1.0"/>
+        <dependency id="BundlerMiddleware" version="0.3.2"/>
     </dependencies>
   </metadata>
 </package>

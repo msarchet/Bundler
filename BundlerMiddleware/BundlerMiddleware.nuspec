@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BundlerMiddleware</id>
-    <version>0.1.0</version>
+    <version>0.3.2</version>
     <title>Bundler</title>
     <authors>Michael Sarchet</authors>
     <owners>Michael Sarchet</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/msarchet/Bundler</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Package for using bundling in OWIN</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Fix missing dll</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>OWIN Bundling Middleware</tags>
   </metadata>

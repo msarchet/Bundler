@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BundlerMiddleware.Markdown</id>
-    <version>$version$</version>
+    <version>0.3.2</version>
     <title>Bundler Markdown</title>
     <authors>Michael Sarchet</authors>
     <owners>Michael Sarchet</owners>
@@ -10,8 +10,11 @@
     <projectUrl>https://github.com/msarchet/Bundler/tree/master/BundlerMarkdown</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>OWIN Middleware for serving markdown files as HTML</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Fix for package reference</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>OWIN Markdown MarkdownSharp</tags>
+    <dependencies>
+        <dependency id="BundlerMiddleware.System.Web" version="0.3.2"/>
+    </dependencies>
   </metadata>
 </package>
