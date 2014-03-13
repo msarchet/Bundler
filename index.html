@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Bundler : OWIN Middleware for making use of bundling pipelines" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Bundler</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/msarchet/Bundler">View on GitHub</a>
+
+          <h1 id="project_title">Bundler</h1>
+          <h2 id="project_tagline">OWIN Middleware for making use of bundling pipelines</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/msarchet/Bundler/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/msarchet/Bundler/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="bundler" class="anchor" href="#bundler"><span class="octicon octicon-link"></span></a>Bundler</h1>
+
+<p>OWIN Middleware for making use of bundling pipelines</p>
+
+<h1>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick Start</h1>
+
+<p>The easiest way to get started using BundlerMiddleware is to use the BundlerMiddleware.System.Web package</p>
+
+<pre><code>Install-Package BundlerMiddleware.System.Web
+</code></pre>
+
+<p>Add the following line to your Startup class</p>
+
+<pre><code>app.UseBundlerMiddleware()
+</code></pre>
+
+<p>Add a route pointing to the file you want to inject into to your global.asax</p>
+
+<pre><code>BundlerRoute.Routes.FromVirtualPath("/", "~/index.html"));
+</code></pre>
+
+<p>Then if you have a bundle of ~/bundles/scripts</p>
+
+<p></p>
+
+<pre><code>&lt;body&gt;
+  !!scripts:~/bundles/scripts!!
+&lt;/body&gt;
+</code></pre>
+
+<p></p>
+
+<p>And that's it</p>
+
+<h1>
+<a name="markdown-support" class="anchor" href="#markdown-support"><span class="octicon octicon-link"></span></a>Markdown Support</h1>
+
+<p>You can now achieve markdown conversion</p>
+
+<pre><code>Install-Package BundlerMiddleware.Markdown
+</code></pre>
+
+<p>For now you need to create a seperate route table for using the markdown and then</p>
+
+<pre><code>app.UseBundlerMarkdown(MarkdownRoutes);
+</code></pre>
+
+<p>If you want to use a template for your markdown you can do the following</p>
+
+<pre><code>app.UseBundlerMarkdownWithTemplate("template.html", MarkdownRoutes);
+</code></pre>
+
+<p>Where the template has </p>
+
+<pre><code>!!block content!!
+</code></pre>
+
+<p>at the place that you want the markdown content inserted for each route</p>
+
+<p><a href="https://github.com/msarchet/Bundler/tree/master/BundlerTestSite">Test Project</a></p>
+
+<h1>
+<a name="example-project" class="anchor" href="#example-project"><span class="octicon octicon-link"></span></a>Example Project</h1>
+
+<p>There is now a test site in this repository that shows code for using most of the current features.</p>
+
+<h1>
+<a name="more-information" class="anchor" href="#more-information"><span class="octicon octicon-link"></span></a>More Information</h1>
+
+<p><a href="http://msarchet.com/using-the-asp-dot-net-bundling-pipeline-with-owin/">http://msarchet.com/using-the-asp-dot-net-bundling-pipeline-with-owin/</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Bundler maintained by <a href="https://github.com/msarchet">msarchet</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39058097-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
