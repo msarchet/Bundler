@@ -54,18 +54,20 @@
 <pre><code>BundlerRoute.Routes.FromVirtualPath("/", "~/index.html"));
 </code></pre>
 
-<p>Then if you have a bundle of ~/bundles/scripts</p>
+<p>Then if you have a bundle of <code>~/bundles/scripts</code> or styles <code>~/styles/main</code></p>
 
-<p></p>
+<p>
+    </p>
+        !!styles:~/styles/main`
+    
+    
+      !!scripts:~/bundles/scripts!!
+    
+  
 
-<pre><code>&lt;body&gt;
-  !!scripts:~/bundles/scripts!!
-&lt;/body&gt;
-</code></pre>
+<p>And that's it!</p>
 
-<p></p>
-
-<p>And that's it</p>
+<p>Bundler uses <code>!!</code> as syntax to look for <code>scripts:&lt;bundlename&gt;</code> or <code>styles:&lt;bundlename&gt;</code> and replaces them with the appropriate script or link tags. Since the <code>BundlerMiddleware.System.Web</code> uses the standard <code>System.Web.Optimization</code> resolvers it will insert the proper tags based on your environments debug mode.</p>
 
 <h1>
 <a name="markdown-support" class="anchor" href="#markdown-support"><span class="octicon octicon-link"></span></a>Markdown Support</h1>
@@ -90,19 +92,49 @@
 <pre><code>!!block content!!
 </code></pre>
 
-<p>at the place that you want the markdown content inserted for each route</p>
+<p>at the place that you want the markdown content inserted for each route.</p>
 
-<p><a href="https://github.com/msarchet/Bundler/tree/master/BundlerTestSite">Test Project</a></p>
+<p>An example template could look like</p>
+
+<pre><code>&lt;!doctype html&gt;
+    &lt;head&gt;
+        &lt;tile&gt;Title&lt;/title&gt;
+        !!styles:~/styles/main!!
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;&lt;a href="/home"&gt;Home&lt;/a&gt;&lt;/h1&gt;
+        !!block content!!
+        !!scripts:~/bundles/main!!
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Currently templating is only provided with the markdown package. It will be moved into core and be useable throughout any Bundler middleware.</p>
 
 <h1>
 <a name="example-project" class="anchor" href="#example-project"><span class="octicon octicon-link"></span></a>Example Project</h1>
 
 <p>There is now a test site in this repository that shows code for using most of the current features.</p>
 
+<p><a href="https://github.com/msarchet/Bundler/tree/master/BundlerTestSite">Test Project</a></p>
+
 <h1>
 <a name="more-information" class="anchor" href="#more-information"><span class="octicon octicon-link"></span></a>More Information</h1>
 
 <p><a href="http://msarchet.com/using-the-asp-dot-net-bundling-pipeline-with-owin/">http://msarchet.com/using-the-asp-dot-net-bundling-pipeline-with-owin/</a></p>
+
+<h1>
+<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h1>
+
+<p>This is a rough listing of planned features:</p>
+
+<ul>
+<li>Fluent route declarations</li>
+<li>Namespaced routes</li>
+<li>Templates everywhere</li>
+<li>Support for custom titles in templates, by convention</li>
+<li>Supoprt for nested templates</li>
+</ul>
       </section>
     </div>
 
