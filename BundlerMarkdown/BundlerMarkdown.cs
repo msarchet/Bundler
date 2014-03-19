@@ -16,13 +16,14 @@ namespace BundlerMarkdown
         
         private readonly IFileResolver fileResolver;
 
-        private readonly Replacer replacer;
+        private readonly IBundlerResolver bundlerResolver;
+        private Replacer replacer;
         private readonly string TemplatePath;
         
         public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, string templatePath, BundlerRouteTable routes) : this(next, fileResolver, routes)
         {
             this.TemplatePath = templatePath;
-            this.replacer = new Replacer(bundleResolver);
+            this.bundlerResolver = bundleResolver;
         }
 
         public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, BundlerRouteTable routes)
@@ -33,6 +34,7 @@ namespace BundlerMarkdown
 
         public override async System.Threading.Tasks.Task<string> GetContent(IOwinContext context, BundlerRoute route)
         {
+            this.replacer = new Replacer(this.bundlerResolver);
             var path = this.fileResolver.GetFilePath(context, route);
 
             using (var stream = File.OpenText(path))

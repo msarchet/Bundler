@@ -44,10 +44,6 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="BundlerMarkdown, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundlerMiddleware.Markdown.0.3.2\lib\net451\BundlerMarkdown.dll</HintPath>
-    </Reference>
     <Reference Include="BundlerMiddleware, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\BundlerMiddleware.0.3.2\lib\net45\BundlerMiddleware.dll</HintPath>
@@ -106,8 +102,10 @@
       <DependentUpon>markdown.md</DependentUpon>
     </Content>
     <Content Include="Markdown\markdownTemplate.html" />
+    <Content Include="Normal\test2.html" />
     <Content Include="packages.config" />
     <Content Include="Markdown\markdown.md" />
+    <Content Include="Markdown\markdown2.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

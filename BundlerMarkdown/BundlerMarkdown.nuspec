@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BundlerMiddleware.Markdown</id>
-    <version>0.3.2</version>
+    <version>0.3.3</version>
     <title>Bundler Markdown</title>
     <authors>Michael Sarchet</authors>
     <owners>Michael Sarchet</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/msarchet/Bundler/tree/master/BundlerMarkdown</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>OWIN Middleware for serving markdown files as HTML</description>
-    <releaseNotes>Fix for package reference</releaseNotes>
+    <releaseNotes>Fix for transforms breaking because of replacer reuse</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>OWIN Markdown MarkdownSharp</tags>
     <dependencies>

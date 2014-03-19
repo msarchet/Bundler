@@ -29,10 +29,6 @@
 
         public override async Task<string> GetContent(IOwinContext context, BundlerRoute route)
         {
-            if (contentCache.ContainsKey(route.Route))
-            {
-                return contentCache[route.Route];
-            }
 
             return await this.replacer.MatchReplacer(this.fileResolver.GetFilePath(context, route));
 
