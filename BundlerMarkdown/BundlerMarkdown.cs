@@ -5,25 +5,34 @@
     using System.Runtime.Remoting.Messaging;
 
     using BundlerMiddleware;
-    using Microsoft.Owin;
     using MarkdownSharp;
+    using Microsoft.Owin;
     using Owin;
 
     public class BundlerMarkdown : BundlerMiddlewareBase
     {
         private static readonly Markdown markdown = new Markdown { EmptyElementSuffix = ">" };
-
         private readonly IFileResolver fileResolver;
-
         private readonly IBundlerResolver bundlerResolver;
-        private Replacer replacer;
         private readonly string TemplatePath;
+        private readonly BundleMatcher bundleMatcher;	
 
+        private Replacer replacer;
+
+		/// <summary>
+		/// Creates a BundlerMarkdown Middleware with a template and bundling
+		/// </summary>
+		/// <param name="next"></param>
+		/// <param name="fileResolver"></param>
+		/// <param name="bundleResolver"></param>
+		/// <param name="templatePath"></param>
+		/// <param name="routes"></param>
         public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, string templatePath, BundlerRouteTable routes)
             : this(next, fileResolver, routes)
         {
             this.TemplatePath = templatePath;
             this.bundlerResolver = bundleResolver;
+            this.bundleMatcher = new BundleMatcher(this.bundlerResolver);
         }
 
         public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, BundlerRouteTable routes)
@@ -34,7 +43,7 @@
 
         public override async System.Threading.Tasks.Task<string> GetContent(IOwinContext context, BundlerRoute route)
         {
-            this.replacer = new Replacer(this.bundlerResolver);
+            this.replacer = new Replacer();
             var path = this.fileResolver.GetFilePath(context, route);
 
             using (var stream = File.OpenText(path))
@@ -46,7 +55,9 @@
                     return markdown.Transform(contents);
                 }
 
-                this.replacer.AddMatcher(Replacer.ContentMatcher, match => markdown.Transform(contents));
+                this.replacer.AddMatcher(this.bundleMatcher.Matcher, this.bundleMatcher.BundleMatchReplace);
+                this.replacer.AddMatcher(Matchers.ContentMatcher, match => markdown.Transform(contents));
+
                 return
                     await
                     this.replacer.MatchReplacer(
@@ -59,6 +70,7 @@
 namespace BundlerMiddleware
 {
     using System;
+    using Owin;
 
     public static class BundlerMarkdownExtensions
     {
@@ -80,6 +92,4 @@ namespace BundlerMiddleware
                 routes);
         }
     }
-
-
 }
