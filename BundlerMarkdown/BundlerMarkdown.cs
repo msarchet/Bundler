@@ -1,26 +1,26 @@
-﻿using BundlerMiddleware;
-using MarkdownSharp;
-using Owin;
-using System.IO;
-
-namespace BundlerMarkdown
+﻿namespace BundlerMarkdown
 {
+    using System.IO;
     using System;
     using System.Runtime.Remoting.Messaging;
 
+    using BundlerMiddleware;
     using Microsoft.Owin;
+    using MarkdownSharp;
+    using Owin;
 
     public class BundlerMarkdown : BundlerMiddlewareBase
     {
         private static readonly Markdown markdown = new Markdown { EmptyElementSuffix = ">" };
-        
+
         private readonly IFileResolver fileResolver;
 
         private readonly IBundlerResolver bundlerResolver;
         private Replacer replacer;
         private readonly string TemplatePath;
-        
-        public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, string templatePath, BundlerRouteTable routes) : this(next, fileResolver, routes)
+
+        public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, string templatePath, BundlerRouteTable routes)
+            : this(next, fileResolver, routes)
         {
             this.TemplatePath = templatePath;
             this.bundlerResolver = bundleResolver;
@@ -67,7 +67,7 @@ namespace BundlerMiddleware
             app.Use(typeof(BundlerMarkdown.BundlerMarkdown), new DefaultFileResolver(), routes);
         }
 
-        public static void UseBundlerMarkdownWithTempalte(
+        public static void UseBundlerMarkdownWithTemplate(
             this IAppBuilder app,
             string templatePath,
             BundlerRouteTable routes)
@@ -81,5 +81,5 @@ namespace BundlerMiddleware
         }
     }
 
-    
+
 }
