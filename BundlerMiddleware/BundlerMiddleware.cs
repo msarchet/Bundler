@@ -14,24 +14,20 @@
 	/// </summary>
     public class BundlerMiddleware : BundlerMiddlewareBase
     {    
-        private static readonly IDictionary<string ,string> contentCache = new ConcurrentDictionary<string, string>();
-
-	    private readonly Replacer replacer;
-        
+        private readonly BundleMatcher bundleMatcher;
         private readonly IFileResolver fileResolver;
-	    private readonly IBundlerResolver bundleResolver;
+        private readonly Replacer replacer = new Replacer();
 
         public BundlerMiddleware(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, BundlerRouteTable routes) : base(next, routes)
         {
             this.fileResolver = fileResolver;
-            this.replacer = new Replacer(bundleResolver);
+			this.bundleMatcher = new BundleMatcher(bundleResolver);
+            this.replacer.AddMatcher(bundleMatcher.Matcher, bundleMatcher.BundleMatchReplace);
         }
 
         public override async Task<string> GetContent(IOwinContext context, BundlerRoute route)
         {
-
             return await this.replacer.MatchReplacer(this.fileResolver.GetFilePath(context, route));
-
         }
     }
 }

@@ -8,6 +8,8 @@ using BundlerMiddleware;
 
 namespace BundlerTestSite
 {
+    using BundlerMiddleware;
+
     public class Startup
     {
         public static BundlerRouteTable MarkdownRoutes = new BundlerRouteTable();
