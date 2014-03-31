@@ -9,7 +9,7 @@ namespace BundlerTestSite
         protected void Application_Start(object sender, EventArgs e)
         {
             BundleTable.Bundles.Add(new ScriptBundle("~/bundles/script").IncludeDirectory("~/Scripts", "*.js", true));
-			BundleTable.Bundles.Add(new StyleBundle("~/bundles/style").IncludeDirectory("~/Styles", "*.css", true));
+            BundleTable.Bundles.Add(new StyleBundle("~/bundles/style").IncludeDirectory("~/Styles", "*.css", true));
             BundlerRoutes.Routes.FromVirtualPath("/test", "~/Normal/test.html");
             BundlerRoutes.Routes.FromVirtualPath("/test2", "~/Normal/test2.html");
             Startup.MarkdownRoutes.FromVirtualPath("/markdown", "~/Markdown/markdown.md");
