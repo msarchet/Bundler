@@ -16,8 +16,8 @@ namespace BundlerTestSite
         public static BundlerRouteTable MarkdownRoutesWithTemplate = new BundlerRouteTable();
         public void Configuration(IAppBuilder app)
         {
-			app.UseBundlerMiddlewareForIIS();
-			app.UseBundlerMarkdown(MarkdownRoutes);
+            app.UseBundlerMiddlewareForIIS();
+            app.UseBundlerMarkdown(MarkdownRoutes);
             app.UseBundlerMarkdownWithTempalte("~/markdown/markdowntemplate.html", MarkdownRoutesWithTemplate);
         }
     }
