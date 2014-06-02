@@ -3,6 +3,7 @@ Bundler
 
 OWIN Middleware for making use of bundling pipelines
 
+[![Build status](https://ci.appveyor.com/api/projects/status/emu6eyfjqsk6ycxs)](https://ci.appveyor.com/project/msarchet/bundler)
 
 Quick Start
 ===========
