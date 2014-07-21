@@ -38,14 +38,14 @@
         }
     }
 
-	public class BundleMatcher
+    public class BundleMatcher
     {
         private readonly IBundlerResolver bundleResolver;
-		public BundleMatcher(IBundlerResolver bundleResolver)
+        public BundleMatcher(IBundlerResolver bundleResolver)
         {
             this.bundleResolver = bundleResolver;
         }
-		
+        
         public readonly Regex Matcher = new Regex(@"\!\!(scripts|styles):([^\}]+?)\!\!", RegexOptions.Compiled);
 
         public string BundleMatchReplace(Match match)
