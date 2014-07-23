@@ -18,7 +18,7 @@ namespace BundlerTestSite
         {
             app.UseBundlerMiddlewareForIIS();
             app.UseBundlerMarkdown(MarkdownRoutes);
-            app.UseBundlerMarkdownWithTempalte("~/markdown/markdowntemplate.html", MarkdownRoutesWithTemplate);
+            app.UseBundlerMarkdownWithTemplate("~/markdown/markdowntemplate.html", MarkdownRoutesWithTemplate);
         }
     }
 }

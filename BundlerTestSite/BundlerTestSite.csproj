@@ -46,17 +46,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="BundlerMarkdown">
-      <HintPath>..\packages\BundlerMiddleware.Markdown.0.3.3\lib\net451\BundlerMarkdown.dll</HintPath>
-    </Reference>
-    <Reference Include="BundlerMiddleware, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundlerMiddleware.0.3.2\lib\net45\BundlerMiddleware.dll</HintPath>
-    </Reference>
-    <Reference Include="BundlerMiddleware.System.Web, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundlerMiddleware.System.Web.0.3.2\lib\net45\BundlerMiddleware.System.Web.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -134,6 +123,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BundlerMarkdown\BundlerMarkdown.csproj">
+      <Project>{6d94670c-8c47-4a63-88f3-f78ec3286d16}</Project>
+      <Name>BundlerMarkdown</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BundlerMiddleware.System.Web\BundlerMiddleware.System.Web.csproj">
+      <Project>{c7a73795-0a66-49d3-b82e-35c679042510}</Project>
+      <Name>BundlerMiddleware.System.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BundlerMiddleware\BundlerMiddleware.csproj">
+      <Project>{a512a2f1-468a-4e91-9c68-3bac36833902}</Project>
+      <Name>BundlerMiddleware</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
