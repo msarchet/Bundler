@@ -41,7 +41,7 @@
             this.fileResolver = fileResolver;
         }
 
-        public override async System.Threading.Tasks.Task<string> GetContent(IOwinContext context, BundlerRoute route)
+        public override async System.Threading.Tasks.Task<string> GetContent(IOwinContext context, IBundlerRoute route)
         {
             this.replacer = new Replacer();
             var path = this.fileResolver.GetFilePath(context, route);

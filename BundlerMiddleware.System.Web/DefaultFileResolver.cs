@@ -9,7 +9,7 @@
     /// </summary>
     public class DefaultFileResolver : IFileResolver
     {
-        public string GetFilePath(IOwinContext context, BundlerRoute route)
+        public string GetFilePath(IOwinContext context, IBundlerRoute route)
         {
             var baseContext = context.Environment["System.Web.HttpContextBase"] as System.Web.HttpContextBase;
 

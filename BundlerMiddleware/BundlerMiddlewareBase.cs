@@ -10,7 +10,7 @@ namespace BundlerMiddleware
         {
             this.routes = routes; 
         }
-        public abstract Task<string> GetContent(IOwinContext context, BundlerRoute route);
+        public abstract Task<string> GetContent(IOwinContext context, IBundlerRoute route);
     
         public override async Task Invoke(IOwinContext context)
         {

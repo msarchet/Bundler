@@ -25,7 +25,7 @@
             this.replacer.AddMatcher(bundleMatcher.Matcher, bundleMatcher.BundleMatchReplace);
         }
 
-        public override async Task<string> GetContent(IOwinContext context, BundlerRoute route)
+        public override async Task<string> GetContent(IOwinContext context, IBundlerRoute route)
         {
             return await this.replacer.MatchReplacer(this.fileResolver.GetFilePath(context, route));
         }
