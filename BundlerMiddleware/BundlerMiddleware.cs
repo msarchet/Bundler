@@ -9,9 +9,9 @@
 
     using Microsoft.Owin;
 
-	/// <summary>
-	/// Used to resolve the bunlde tokens into html
-	/// </summary>
+    /// <summary>
+    /// Used to resolve the bunlde tokens into html
+    /// </summary>
     public class BundlerMiddleware : BundlerMiddlewareBase
     {    
         private readonly BundleMatcher bundleMatcher;
@@ -21,7 +21,7 @@
         public BundlerMiddleware(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, BundlerRouteTable routes) : base(next, routes)
         {
             this.fileResolver = fileResolver;
-			this.bundleMatcher = new BundleMatcher(bundleResolver);
+            this.bundleMatcher = new BundleMatcher(bundleResolver);
             this.replacer.AddMatcher(bundleMatcher.Matcher, bundleMatcher.BundleMatchReplace);
         }
 

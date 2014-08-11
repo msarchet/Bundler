@@ -2,9 +2,9 @@
 {
     using System.Web.Optimization;
 
-	/// <summary>
-	/// Standard Bundle Resolver
-	/// </summary>
+    /// <summary>
+    /// Standard Bundle Resolver
+    /// </summary>
     public class DefaultBundleResolver : IBundlerResolver
     {
 

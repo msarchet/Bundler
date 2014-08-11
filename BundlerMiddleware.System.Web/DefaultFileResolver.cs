@@ -4,9 +4,9 @@
 
     using Microsoft.Owin;
 
-	/// <summary>
-	/// Standard File Resolver
-	/// </summary>
+    /// <summary>
+    /// Standard File Resolver
+    /// </summary>
     public class DefaultFileResolver : IFileResolver
     {
         public string GetFilePath(IOwinContext context, BundlerRoute route)

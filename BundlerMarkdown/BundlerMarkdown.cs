@@ -19,14 +19,14 @@
 
         private Replacer replacer;
 
-		/// <summary>
-		/// Creates a BundlerMarkdown Middleware with a template and bundling
-		/// </summary>
-		/// <param name="next"></param>
-		/// <param name="fileResolver"></param>
-		/// <param name="bundleResolver"></param>
-		/// <param name="templatePath"></param>
-		/// <param name="routes"></param>
+        /// <summary>
+        /// Creates a BundlerMarkdown Middleware with a template and bundling
+        /// </summary>
+        /// <param name="next"></param>
+        /// <param name="fileResolver"></param>
+        /// <param name="bundleResolver"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="routes"></param>
         public BundlerMarkdown(OwinMiddleware next, IFileResolver fileResolver, IBundlerResolver bundleResolver, string templatePath, BundlerRouteTable routes)
             : this(next, fileResolver, routes)
         {
