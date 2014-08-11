@@ -13,6 +13,6 @@
         /// <param name="context">Request Context</param>
         /// <param name="route">Route to resolve the path for</param>
         /// <returns>The full file path</returns>
-        string GetFilePath(IOwinContext context, BundlerRoute route);
+        string GetFilePath(IOwinContext context, IBundlerRoute route);
     }
 }
